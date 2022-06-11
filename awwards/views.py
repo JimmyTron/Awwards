@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as authlogin
+from .forms import RegisterForm
 
 
 # Create your views here.	# Create your views here.
@@ -28,3 +29,25 @@ def login(request):
 
    return render(request, 'awwards/login.html') 
 
+def register(request):
+   register_form = RegisterForm()
+   if request.method == 'POST':
+      form = RegisterForm(request.POST)
+      if form.is_valid():
+         user = form.save(commit=False)
+         user.save()
+         profile = Profile(username=request.user.username, owner=user)
+         profile.save()
+         print(profile)
+
+      return redirect('login')
+   context = {
+      'form': register_form,
+   }
+
+
+   return render(request, 'awwards/register.html', context)
+
+
+def logout(request):
+   return redirect('login')
