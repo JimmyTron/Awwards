@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as authlogin
 from .forms import RegisterForm
+from awwards.models import Profile
 
 
 # Create your views here.	# Create your views here.
