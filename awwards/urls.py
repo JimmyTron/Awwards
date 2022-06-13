@@ -17,8 +17,8 @@ from django.conf.urls.static import static
 urlpatterns=[
     path('', views.login, name='login'),
     path('register/', views.register, name='register'),
-    path('index',views.index,name='Index'),
     path('create/profile',views.create_profile, name='create-profile'),
+    path('index',views.index,name='Index'),
     path('new/project',views.new_project, name='new-project'),
     path('directory/',views.directory, name='directory'),
     path('profile/',views.profile, name='profile'),

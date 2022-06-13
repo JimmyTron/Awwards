@@ -103,7 +103,7 @@ def index(request):
         if not request.user.is_authenticated:
             return redirect('/accounts/login/')
         current_user = request.user
-        profile =Profile.objects.get(username=current_user)
+        profile =Profile.objects.filter(username=current_user)[0]
         print(current_user)
     except ObjectDoesNotExist:
         return redirect('create-profile')
