@@ -2,7 +2,7 @@
 {% block content %}
 
     <div class="container mt-5 col-sm-4">
-        <form>
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
 
             {% if messages %}

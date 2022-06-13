@@ -37,6 +37,9 @@ import json
 from django.db.models import Q
 from django.db.models import Max
 from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import authenticate, login as authlogin,logout
+
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -44,9 +47,11 @@ from .serializers import ProfileSerializer,ProjectSerializer,technologiesSeriali
 
 
 def login(request):	
+   print(request.method)
    if request.method == 'POST':
-      username = request.POST.get('username')
-      password = request.POST.get('password')
+      username = request.POST['username']
+      password = request.POST['password']
+      print(username, password)
 
       try:
          user = User.objects.get(username=username, password=password)
@@ -57,7 +62,7 @@ def login(request):
       user = authenticate(request, username=username, password=password)
       if user is not None:
          authlogin(request,user)
-         return redirect('create-profile')
+         return redirect('create/profile')
       else:
          messages.error(request, 'Invalid username or password')
 
