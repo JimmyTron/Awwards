@@ -86,14 +86,14 @@ from django.contrib.auth.models import User
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import ProfileSerializer,ProjectSerializer,technologiesSerializer,categoriesSerializer
+from .serializers import ProfileSerializer,ProjectSerializer,technologiesSerializer,categoriesSerializer
 
 
 # Create your views here.
 def index(request):
     date = dt.date.today()
     winners=Project.objects.all()[:4]
-    caraousel = Project.objects.order_by('-overall_score')[0]
+    caraousel = Project.objects.order_by('-overall_score')
     nominees=Project.objects.all()[4:8]
     directories=Project.objects.all()[8:11]
     resources=Project.objects.all()[11:15]
