@@ -24,58 +24,12 @@
 #    serializer = ProfileSerializer(profile, many=True)
 #    return JsonResponse(serializer.data, safe=False)
 
-
-
-
-# def login(request):	
-#    if request.method == 'POST':
-#       username = request.POST.get('username')
-#       password = request.POST.get('password')
-
-#       try:
-#          user = User.objects.get(username=username, password=password)
-
-#       except:
-#          messages.error(request, 'Invalid username or password')
-
-#       user = authenticate(request, username=username, password=password)
-#       if user is not None:
-#          authlogin(request,user)
-#          return redirect('home')
-#       else:
-#          messages.error(request, 'Invalid username or password')
-
-
-#    return render(request, 'awwards/login.html') 
-
-# def register(request):
-#    register_form = RegisterForm()
-#    if request.method == 'POST':
-#       form = RegisterForm(request.POST)
-#       if form.is_valid():
-#          user = form.save(commit=False)
-#          user.save()
-#          profile = Profile(username=request.user.username)
-#          profile.save()
-
-#       return redirect('login')
-#    context = {
-#       'form': register_form,
-#    }
-
-
-#    return render(request, 'awwards/register.html', context)
-
-
-# def logout(request):
-#    return redirect('login')
-
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from .models import categories,technologies,Project,Profile,Rating
-from .forms import ProjectForm,ProfileForm,RatingForm
+from .forms import ProjectForm,ProfileForm,RatingForm, RegisterForm
 from decouple import config,Csv
 import datetime as dt
 from django.http import JsonResponse
@@ -87,6 +41,52 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProfileSerializer,ProjectSerializer,technologiesSerializer,categoriesSerializer
+
+
+def login(request):	
+   if request.method == 'POST':
+      username = request.POST.get('username')
+      password = request.POST.get('password')
+
+      try:
+         user = User.objects.get(username=username, password=password)
+
+      except:
+         messages.error(request, 'Invalid username or password')
+
+      user = authenticate(request, username=username, password=password)
+      if user is not None:
+         authlogin(request,user)
+         return redirect('create-profile')
+      else:
+         messages.error(request, 'Invalid username or password')
+
+
+   return render(request, 'login.html') 
+
+def register(request):
+   register_form = RegisterForm()
+   if request.method == 'POST':
+      form = RegisterForm(request.POST)
+      if form.is_valid():
+         user = form.save(commit=False)
+         user.save()
+         profile = Profile(username=request.user.username)
+         profile.save()
+
+      return redirect('login')
+   context = {
+      'form': register_form,
+   }
+
+
+   return render(request, 'register.html', context)
+
+
+def logout(request):
+   return redirect('login')
+
+
 
 
 # Create your views here.

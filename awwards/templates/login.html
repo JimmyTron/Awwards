@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container mt-5">
+        <form>
+            {% csrf_token %}
+
+            {% if messages %}
+                <p>{% for message in messages %} </p>
+                <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <h3>Login</h3>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Username</label>
+                <input type="username" name="username" class="form-control" id="username" placeholder="username">
+            </div>
+            <div class="mb-2">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="password">
+            </div>
+            <div class="row mt-3 mb-2">
+                <div class="col-md-6">
+                    <input type="submit" value="Login" class="btn btn-login">
+                </div>
+                <p class="text-center">
+                    Dont have an account?  <a href="{% url 'register' %}" class="text-decoration-none">Signup</a>
+                </p>    
+            </div>
+        </form>
+    </div>
+    <div class="pt-2 p-5">
+        
+    </div>
+
+{% endblock content %}
