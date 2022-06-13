@@ -4,15 +4,34 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as authlogin
 from .forms import RegisterForm
-from awwards.models import Profile
+
+from awwards.models import Profile, Project
+from django.http import JsonResponse
+from .serializers import ProjectSerializer, ProfileSerializer
+
 
 
 # Create your views here.	# Create your views here.
+
+def project(request):
+   project = Project.objects.all()
+   serializer = ProjectSerializer(project, many=True)
+   return JsonResponse(serializer.data, safe=False)
+
+
+def profile(request):
+   profile = Profile.objects.all()
+   serializer = ProfileSerializer(profile, many=True)
+   return JsonResponse(serializer.data, safe=False)
+
+
+
+
+
 def login(request):	
    if request.method == 'POST':
       username = request.POST.get('username')
       password = request.POST.get('password')
-      print(username, password)
 
       try:
          user = User.objects.get(username=username, password=password)
@@ -37,9 +56,8 @@ def register(request):
       if form.is_valid():
          user = form.save(commit=False)
          user.save()
-         profile = Profile(username=request.user.username, owner=user)
+         profile = Profile(username=request.user.username)
          profile.save()
-         print(profile)
 
       return redirect('login')
    context = {
