@@ -149,15 +149,15 @@ def new_project(request):
 
     return render(request,'new_project.html',{"form":form})
 
-# def directory(request):
-#     date = dt.date.today()
-#     current_user = request.user
-#     profile =Profile.objects.filter(username=current_user)[0]
+def directory(request):
+    date = dt.date.today()
+    current_user = request.user
+    profile =Profile.objects.filter(username=current_user)[0]
 
-#     winners=Project.objects.all()
-#     caraousel = Project.objects.get(id=8)
+    winners=Project.objects.all()
+    caraousel = Project.objects.get(id=8)
 
-#     return render(request,'directory.html',{"winners":winners,"profile":profile,"caraousel":caraousel,"date":date})
+    return render(request,'directory.html',{"winners":winners,"profile":profile,"caraousel":caraousel,"date":date})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
