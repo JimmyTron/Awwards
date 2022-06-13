@@ -20,7 +20,6 @@ urlpatterns=[
     path('create/profile',views.create_profile, name='create-profile'),
     path('index',views.index,name='Index'),
     path('new/project',views.new_project, name='new-project'),
-    path('directory/',views.directory, name='directory'),
     path('profile/',views.profile, name='profile'),
     path('site/(\d+)',views.site,name='site'),
     path('search/',views.search_results, name='search_results'),

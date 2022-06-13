@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="container mt-5">
+    <div class="container mt-5 col-sm-4">
         <form>
             {% csrf_token %}
 
@@ -10,7 +10,7 @@
                 <p>{{ message }}</p>
                 {% endfor %}
             {% endif %}
-            <h3>Login</h3>
+            <h4>Login</h4>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Username</label>
                 <input type="username" name="username" class="form-control" id="username" placeholder="username">
