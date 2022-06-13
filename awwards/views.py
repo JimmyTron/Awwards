@@ -147,7 +147,7 @@ def new_project(request):
 def directory(request):
     date = dt.date.today()
     current_user = request.user
-    profile =Profile.objects.get(username=current_user)
+    profile =Profile.objects.filter(username=current_user)[0]
 
     winners=Project.objects.all()
     caraousel = Project.objects.get(id=8)
