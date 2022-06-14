@@ -47,7 +47,7 @@ def register(request):
       if form.is_valid():
          user = form.save(commit=False)
          user.save()
-         profile = Profile(username=request.user.username)
+         profile = Profile(username=request.user.username)[0]
          profile.save()
 
       return redirect('login')
@@ -107,7 +107,7 @@ def new_project(request):
             project = form.save(commit=False)
             project.username = current_user
             project.avatar = profile.avatar
-            project.country = profile.country
+           
 
             project.save()
     else:
