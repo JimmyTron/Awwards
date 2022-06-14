@@ -1,21 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
 {% load static %}
-{% load staticfiles %}
 
-{% block styles%}
-{% bootstrap_css %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
-{%endblock %}
-{% include 'navbar.html' %}
 {% block content %}
 
 <div class="container headers">
-    <h4 style="float:left;"><span class="bold" >Sites of the Day</span>  Previous Winners</h4>
-    <!-- <h4 style="float:right"><span><span class="bold">Mobile Excellence</span>  Recognized by Google</span></h4> -->
+    <h4 style="float:left;" class="bold" >Sites of the Day</h4>
 </div>
 <div class="pages">
 <div class="row">
@@ -34,7 +25,7 @@
     <a href="{{winner.link}}">
       <p class="card-text" style="font-size:14px;color:#49c5b6;font-weight:bold;">{{winner.title}}</p>
     </a>
-    <p class="card-text" style="line-height:28px;">{{winner.country}}</p>
+  
   </div>
 </div>
   </div>

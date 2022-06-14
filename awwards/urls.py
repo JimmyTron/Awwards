@@ -17,8 +17,7 @@ urlpatterns=[
 
     path('api/profiles/', views.ProfileList.as_view()),
     path('api/projects/', views.ProjectList.as_view()),
-    # path('api/categories/', views.categoriesList.as_view()),
-    # path('api/technologies/', views.technologiesList.as_view()),
+    
 ]
 
 if settings.DEBUG:

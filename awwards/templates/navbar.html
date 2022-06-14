@@ -29,25 +29,11 @@
          </div>
       </div>
 
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
-    </div>
-  </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
         <div class="aw-logo">
         <a class="navbar-brand" href="/">
-          <img alt="Brand" src="{% static 'img/navbar.png' %}" width=150 height=35>
+          <img alt="Brand" src="{% static 'images/navbar.png' %}" width=150 height=35>
         </a>
       </div>
       </div>
@@ -58,7 +44,7 @@
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form" role="search" action="{% url 'search_results'%}">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search For Inspiration" name="project">
+            <input type="text" class="form-control" placeholder="Search" name="project">
           </div>
         </form>
       </ul>
@@ -70,7 +56,7 @@
       </a>
       <img src="{{profile.avatar.url}}" class="gallery-image" style="margin:auto;"  width=8 height=8>
       <a href="{% url 'new-project' %}" >
-        <button class="btn btn-success" style="height:70px;  margin-top: -6px;background-color:#49c5b6;border-radius:0;">SUBMIT YOUR SITE</button>
+        <button class="btn btn-success" style="height:50px;  margin-top: 10px; margin-left:20px;background-color:#49c5b6;border-radius:20;">Create New Project</button>
       </a>
 
     </div>

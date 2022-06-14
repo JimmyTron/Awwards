@@ -121,7 +121,7 @@ def directory(request):
     profile =Profile.objects.filter(username=current_user)[0]
 
     winners=Project.objects.all()
-    caraousel = Project.objects.get(id=8)
+    caraousel = Project.objects.get(id=current_user.id)
 
     return render(request,'directory.html',{"winners":winners,"profile":profile,"caraousel":caraousel,"date":date})
 
@@ -139,7 +139,7 @@ def site(request,site_id):
     profile =Profile.objects.get(username=current_user)
 
     try:
-        project = Project.objects.get(id=site_id)
+        project = Project.objects.get(id=8)
     except:
         raise ObjectDoesNotExist()
 
@@ -235,15 +235,3 @@ class ProjectList(APIView):
         all_projects = Project.objects.all()
         serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
-
-# class categoriesList(APIView):
-#     def get(self, request, format=None):
-#         all_categories = categories.objects.all()
-#         serializers = categoriesSerializer(all_categories, many=True)
-#         return Response(serializers.data)
-
-# class technologiesList(APIView):
-#     def get(self, request, format=None):
-#         all_technologies = technologies.objects.all()
-#         serializers = technologiesSerializer(all_technologies, many=True)
-#         return Response(serializers.data)

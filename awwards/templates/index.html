@@ -3,14 +3,15 @@
 {% load bootstrap3 %}
 {% load static %}
 
-{% include 'navbar.html' %}
+
+
 {% block content %}
 
     <div class="carousel-inner">
       <div class="landingpage" >
         <img src="{{caraousel.landing_page.url}}" class="landingpage-img">
         <div class="time">
-          <p><span class="bold">Site of the day </span>    {{date}}</p>
+          <p><span class="text-center">Site of the day </span>{{date}}</p>
         </div>
 
         <div class="header">
@@ -73,9 +74,6 @@
 </div>
 </div>
 
-<div class="container headers">
-    <h4><span class="bold">Nominees</span>  We need your vote!</h4>
-</div>
 
 <div class="pages">
 <div class="row">
@@ -105,10 +103,6 @@
 </div>
 
 
-<div class="container headers">
-    <h4><span class="bold">Directory</span>  Find the Best Digital Agencies & Professionals</h4>
-</div>
-
 <div class="pages">
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -116,7 +110,7 @@
   <!-- <img class="card-img-top img-responsive" src="{% static 'img/trial1.png'%}" alt="Card image cap" responsive> -->
   <div class="card-body">
     <h5 class="card-title" style="line-height:28px;font-size:15px;">Professional Directory</h5>
-    <p class="card-text professional">Discover the best agencies and Professionals in <span style="color:#49c5b6">Kenya</span></p>
+    <p class="card-text professional">Discover <span style="color:#49c5b6">Quality</span> in the Field </p>
     <br><br>
     <a href="{% url 'directory' %}" >
       <button class="btn btn-default btn-sm" style="border-radius:18%;">Discover</button>
@@ -133,7 +127,7 @@
     <a href="/site/{{directory.id}}" style="color:black;text-decoration:none;">
       <h5 class="card-title" style="line-height:28px;">{{directory.title}}</h5>
     </a>
-    <p class="card-text">From {{directory.country}}<span class="date">{{directory.post_date}}</span></p>
+    <p class="card-text"><span class="date">{{directory.post_date}}</span></p>
   </div>
   <div class="card-footer ">
     <div class="user-image">

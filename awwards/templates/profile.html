@@ -26,54 +26,26 @@
 <hr>
 
 <div class="container headers">
-    <h4 style="float:left;"><span class="bold" >Projects</span>  Your projects</h4>
+    <h4 style="float:left;"><span class="bold" > Your projects</h4>
     <!-- <h4 style="float:right"><span><span class="bold">Mobile Excellence</span>  Recognized by Google</span></h4> -->
 </div>
 <div class="pages">
-<div class="row">
-  {% for project in projects %}
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{{project.landing_page.url}}" alt="Card image cap" responsive>
-  <div class="card-body">
-    <a href="/site/{{project.id}}" style="color:black;text-decoration:none;">
-      <h5 class="card-title" style="line-height:28px;">{{project.title}}</h5>
-    </a>
-    <p class="card-text">From {{project.country}}<span class="date">{{project.post_date}}</span></p>
+  <div class="row">
+    {% for project in projects %}
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <div class="card" style="width: 40.2rem;">
+        <img class="card-img-top img-responsive" src="{{project.landing_page.url}}" alt="Card image cap" responsive>
+        <div class="card-body">
+          <a href="/site/{{project.id}}" style="color:black;text-decoration:none;">
+            <h5 class="card-title" style="line-height:28px;">{{project.title}}</h5>
+          </a>
+          <p class="card-text"class="date">{{project.post_date}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
-  {% endfor %}
-
-  
-</div>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{% static 'img/test3.jpeg'%}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title" style="line-height:28px;">Lessons in Life</h5>
-    <p class="card-text">From Kenya <span class="date">October 6,2018</span></p>
-  </div>
-
-
-</div>
-  </div>
-
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{% static 'img/test2.jpeg'%}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title" style="line-height:28px;">Whispers</h5>
-    <p class="card-text">From Paris <span class="date">September 26,2018</span></p>
-  </div>
-
-</div>
-  </div>
-</div>
-</div>
-
+   {% endfor %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
