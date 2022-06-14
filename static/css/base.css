@@ -1,3 +1,6 @@
 body{
   background-color: #f4f7f6;
 }
+.login{
+  background-image: url('static/images/landing2.jpg');
+}

@@ -190,7 +190,7 @@ def site(request,site_id):
         if form.is_valid():
             rating = form.save(commit=False)
             rating.project= project
-            rating.profile = profile
+            rating.profile = profile[0]
             rating.overall_score = (rating.design+rating.usability+rating.creativity+rating.content)/2
             rating.save()
     else:

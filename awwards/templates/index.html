@@ -9,9 +9,9 @@
 
     <div class="carousel-inner">
       <div class="landingpage" >
-        <img src="{% static 'images/landing.jpg' %}" class="landingpage-img">
+        <img src="{% static 'images/landing2.jpg' %}" class="landingpage-img">
         <div class="time">
-          <p><span class="text-center">Site of the day </span>{{date}}</p>
+          <p><span class="text-center"></span>{{date}}</p>
         </div>
 
         <div class="header">
@@ -24,7 +24,6 @@
         </div>
 
           <div class="middle">
-
             <div class="circle" id="circle-a">
             	<strong></strong>
               <p class="rating">DESIGN</p>
@@ -50,64 +49,33 @@
     <h4 style="float:left;"><span class="bold" >Sites of the Day</span></h4>
 </div>
 <div class="pages">
-<div class="row">
+<div class="column">
   {% for winner in winners %}
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{{winner.landing_page.url}}" alt="Card image cap" responsive>
-  <div class="card-body">
-  <a href="/site/{{winner.id}}" style="color:black;text-decoration:none;">
-    <h5 class="card-title" style="line-height:28px;">{{winner.title}}</h5>
-  </a>
-  </div>
-  <div class="card-footer ">
-    <div class="user-image">
-    <img src="{{winner.avatar.url}}" class="gallery-image" alt=""  width=8 height=8>
-    <a href="/user/{{winner.username}}" style="color:black;text-decoration:none;margin:auto;">
-      <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{winner.username}}</p>
+    <div class="col-xs-4">
+      <div class="card">
+    <img class="card-img-top img-responsive" src="{{winner.landing_page.url}}" alt="Card image cap" responsive>
+    <div class="card-body">
+    <a href="/site/{{winner.id}}" style="color:black;text-decoration:none;">
+      <h5 class="card-title" style="line-height:15px;">{{winner.title}}</h5>
     </a>
+    </div>
+    <div class="card-footer ">
+      <div class="user-image">
+      <img src="{{winner.avatar.url}}" class="gallery-image" alt="">
+      <a href="/user/{{winner.username}}" style="color:black;text-decoration:none;margin:auto;">
+        <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{winner.username}}</p>
+      </a>
+    </div>
+    </div>
   </div>
-  </div>
-</div>
-  </div>
+    </div>
   {% endfor %}
 </div>
-</div>
-
-
-<div class="pages">
-<div class="row">
-  {% for nominee in nominees %}
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{{nominee.landing_page.url}}" alt="Card image cap" responsive>
-  <div class="card-body">
-    <a href="/site/{{nominee.id}}" style="color:black;text-decoration:none;">
-      <h5 class="card-title" style="line-height:28px;">{{nominee.title}}</h5>
-    </a>
-    <p class="card-text">From {{nominee.country}}<span class="date">{{nominee.post_date}}</span></p>
-  </div>
-  <div class="card-footer ">
-    <div class="user-image">
-    <img src="{{nominee.avatar.url}}" class="gallery-image" alt=""  width=8 height=8>
-    <a href="/user/{{nominee.username}}" style="color:black;text-decoration:none;margin:auto;">
-      <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{nominee.username}}</p>
-    </a>
-  </div>
-  </div>
-</div>
-  </div>
-  {% endfor %}
-
-</div>
-</div>
-
-
+</div> 
 <div class="pages">
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
     <div class="card" style="height:44.6rem;width: 40.2rem;">
-  <!-- <img class="card-img-top img-responsive" src="{% static 'img/trial1.png'%}" alt="Card image cap" responsive> -->
   <div class="card-body">
     <h5 class="card-title" style="line-height:28px;font-size:15px;">Professional Directory</h5>
     <p class="card-text professional">Discover <span style="color:#49c5b6">Quality</span> in the Field </p>
