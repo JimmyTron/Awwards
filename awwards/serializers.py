@@ -14,7 +14,7 @@
 
 
 from rest_framework import serializers
-from .models import Profile,Project,categories,technologies
+from .models import Profile,Project
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,13 +26,13 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields='__all__'
 
-class categoriesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = categories
-        fields='__all__'
+# class categoriesSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = categories
+#         fields='__all__'
 
-class technologiesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = technologies
-        fields='__all__'
+# class technologiesSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = technologies
+#         fields='__all__'
 

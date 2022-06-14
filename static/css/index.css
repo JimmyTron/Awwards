@@ -30,6 +30,7 @@ strong{
 .landingpage-img{
   filter: brightness(75%);
   width:100%;
+  background-image: url(static/images/landing.jpg);
   /* background-position: 50% 50%; */
 }
 .middle {

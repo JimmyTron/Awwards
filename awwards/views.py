@@ -1,34 +1,8 @@
-# from django.shortcuts import render,redirect
-# from django.http import HttpResponse
-# from django.contrib import messages
-# from django.contrib.auth.models import User
-# from django.contrib.auth import authenticate, login as authlogin
-# from .forms import RegisterForm
-
-# from awwards.models import Profile, Project
-# from django.http import JsonResponse
-# from .serializers import ProjectSerializer, ProfileSerializer
-
-
-
-# # Create your views here.	# Create your views here.
-
-# def project(request):
-#    project = Project.objects.all()
-#    serializer = ProjectSerializer(project, many=True)
-#    return JsonResponse(serializer.data, safe=False)
-
-
-# def profile(request):
-#    profile = Profile.objects.all()
-#    serializer = ProfileSerializer(profile, many=True)
-#    return JsonResponse(serializer.data, safe=False)
-
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
-from .models import categories,technologies,Project,Profile,Rating
+from .models import Project,Profile,Rating
 from .forms import ProjectForm,ProfileForm,RatingForm, RegisterForm
 from decouple import config,Csv
 import datetime as dt
@@ -43,8 +17,7 @@ from django.contrib.auth import authenticate, login as authlogin,logout
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import ProfileSerializer,ProjectSerializer,technologiesSerializer,categoriesSerializer
-
+from .serializers import ProfileSerializer,ProjectSerializer
 
 def login(request):	
    print(request.method)
@@ -52,7 +25,6 @@ def login(request):
       username = request.POST['username']
       password = request.POST['password']
       print(username, password)
-
       try:
          user = User.objects.get(username=username, password=password)
 
@@ -65,7 +37,6 @@ def login(request):
          return redirect('create/profile')
       else:
          messages.error(request, 'Invalid username or password')
-
 
    return render(request, 'login.html') 
 
@@ -84,17 +55,12 @@ def register(request):
       'form': register_form,
    }
 
-
    return render(request, 'register.html', context)
 
 
 def logout(request):
    return redirect('login')
 
-
-
-
-# Create your views here.
 def index(request):
     date = dt.date.today()
     winners=Project.objects.all()[:4]
@@ -270,14 +236,14 @@ class ProjectList(APIView):
         serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
 
-class categoriesList(APIView):
-    def get(self, request, format=None):
-        all_categories = categories.objects.all()
-        serializers = categoriesSerializer(all_categories, many=True)
-        return Response(serializers.data)
+# class categoriesList(APIView):
+#     def get(self, request, format=None):
+#         all_categories = categories.objects.all()
+#         serializers = categoriesSerializer(all_categories, many=True)
+#         return Response(serializers.data)
 
-class technologiesList(APIView):
-    def get(self, request, format=None):
-        all_technologies = technologies.objects.all()
-        serializers = technologiesSerializer(all_technologies, many=True)
-        return Response(serializers.data)
+# class technologiesList(APIView):
+#     def get(self, request, format=None):
+#         all_technologies = technologies.objects.all()
+#         serializers = technologiesSerializer(all_technologies, many=True)
+#         return Response(serializers.data)

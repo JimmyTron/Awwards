@@ -1,14 +1,3 @@
-# from django.contrib import admin
-# from django.urls import path
-# from .import views
-
-# urlpatterns = [
-#     path('', views.login, name='login'),
-#     path('register/', views.register, name='register'),
-#     path('home/', views.project, name='home'),
-#     path('profile/', views.profile, name='profile')
-# ]
-
 from django.urls import include, path
 from . import views
 from django.conf import settings
@@ -28,8 +17,8 @@ urlpatterns=[
 
     path('api/profiles/', views.ProfileList.as_view()),
     path('api/projects/', views.ProjectList.as_view()),
-    path('api/categories/', views.categoriesList.as_view()),
-    path('api/technologies/', views.technologiesList.as_view()),
+    # path('api/categories/', views.categoriesList.as_view()),
+    # path('api/technologies/', views.technologiesList.as_view()),
 ]
 
 if settings.DEBUG:
