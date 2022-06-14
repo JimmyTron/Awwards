@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'awwards',
     'rest_framework',
-    'bootstrap3'
+    'bootstrap3',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -153,11 +154,21 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+
 )
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIARVZNTIDFXOO322AU'
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'awwward-bucket'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 django_on_heroku.settings(locals())
