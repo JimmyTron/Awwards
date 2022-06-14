@@ -136,11 +136,11 @@ def profile(request):
 @login_required(login_url='/accounts/login/')
 def site(request,site_id):
     current_user = request.user
-    profile =Profile.objects.get(username=current_user)
+    profile =Profile.objects.filter(username=current_user)
 
     try:
-        project = Project.objects.get(id=8)
-    except:
+        project = Project.objects.filter(id=site_id).get()
+    except NotImplementedError:
         raise ObjectDoesNotExist()
 
     try:

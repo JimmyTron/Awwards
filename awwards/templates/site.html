@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
 {% load static %}
-{% load staticfiles %}
+
 
 {% block styles%}
 {% bootstrap_css %}
@@ -27,7 +27,7 @@
           <h1>{{project.title}}</h1>
         </div>
         <div class="page-body">
-          <p>BY <span style="color:#49c5b6;text-transform:uppercase;">{{project.username}}</span> FROM <span class="bold">{{project.country}}</span> WITH 0.75</p>
+          <p>BY <span style="color:#49c5b6;text-transform:uppercase;">{{project.username}}</span></span> WITH 0.75</p>
         </div>
 
           <div class="middle">
@@ -56,33 +56,13 @@
 
 <div class="text-center">
   <h2>{{project.description | safe}}</h2>
-  <!-- <p>{{project.technologies.all}}</p> -->
-<div class="horizontal">
-{% for technology in project.technologies.all %}
-  <button class="btn btn-primary inline">{{ technology }}</button>
-{% endfor%}
-</div>
-
-<div class="spacing"></div>
-
-
-<div class="horizontal">
-{% for category in project.categories.all %}
-<button class="btn btn-danger inline">{{ category }}</button>
-{% endfor%}
-</div>
-
-<hr>
 
 <h3 class="bold">Screenshots</h3>
 
 <div class="screenshots">
-  <img class="screenshot-img img-responsive" src="{{project.screenshot1.url}}" alt="Card image cap" responsive>
+  <img class="screenshot-img img-responsive" width=8 src="{{project.screenshot1.url}}" alt="Card image cap" responsive>
   <img class="screenshot-img img-responsive" src="{{project.screenshot2.url}}" alt="Card image cap" responsive>
-  <img class="screenshot-img img-responsive" src="{{project.screenshot3.url}}" alt="Card image cap" responsive>
-  <img class="screenshot-img img-responsive" src="{{project.screenshot4.url}}" alt="Card image cap" responsive>
 </div>
-
 
 </div>
 

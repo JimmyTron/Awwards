@@ -11,7 +11,7 @@ urlpatterns=[
     path('new/project',views.new_project, name='new-project'),
     path('directory/',views.directory, name='directory'),
     path('profile/',views.profile, name='profile'),
-    path('site/(\d+)',views.site,name='site'),
+    path('site/<site_id>',views.site,name='site'),
     path('search/',views.search_results, name='search_results'),
     path('user/',views.user_profile,name='user-profile'),
 
