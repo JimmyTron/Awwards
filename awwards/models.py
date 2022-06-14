@@ -5,32 +5,6 @@ from django.db.models import Q
 
 import datetime as dt
 
-# Create your models here.
-# class categories(models.Model):
-#     categories= models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.categories
-
-#     def save_category(self):
-#         self.save()
-
-#     @classmethod
-#     def delete_category(cls,categories):
-#         cls.objects.filter(categories=categories).delete()
-
-# class technologies(models.Model):
-#     technologies = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.technologies
-
-#     def save_technology(self):
-#         self.save()
-
-#     @classmethod
-#     def delete_technology(cls,technologies):
-#         cls.objects.filter(technologies=technologies).delete()
 
 class Project(models.Model):
     title = models.CharField(max_length=150)
@@ -45,8 +19,6 @@ class Project(models.Model):
     creativity = models.IntegerField(blank=True,default=0)
     content = models.IntegerField(blank=True,default=0)
     overall_score = models.IntegerField(blank=True,default=0)
-    # technologies = models.ManyToManyField(technologies)
-    # categories = models.ManyToManyField(categories)
     post_date = models.DateTimeField(auto_now_add=True)
     avatar = models.ImageField(upload_to='avatars/')
 
@@ -55,7 +27,7 @@ class Project(models.Model):
 
     @classmethod
     def search_project(cls,search_term):
-        projects = cls.objects.filter(Q(username__username=search_term) | Q(title__icontains=search_term) | Q(country__countries=search_term) | Q(overall_score__icontains=search_term))
+        projects = cls.objects.filter(Q(username__username=search_term) | Q(title__icontains=search_term) | Q(overall_score__icontains=search_term))
         return projects
 
 
