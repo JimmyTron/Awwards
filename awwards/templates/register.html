@@ -14,7 +14,7 @@
 <body style="background-image: url('{% static 'images/login3.webp' %}');backckground-position: fixed;">
 
     <div class="container mt-5 col-md-4" style="margin-left:300px;">
-        <form method="post" class="form-control">
+        <form method="post" action="{% url 'register' %}" class="form-control">
             {% csrf_token %}
 
             {% if messages %}

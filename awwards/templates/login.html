@@ -12,33 +12,35 @@
 {% block content %}
 <body style="background-image: url('{% static 'images/login3.webp' %}');backckground-position: fixed;">
 <div class="login" id="login">
-    <div class="container mt-5 col-md-4" style="margin-left:300px;">
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
+    <div class="">
+        <div class="container mt-5 col-md-4">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
 
-            {% if messages %}
-                <p>{% for message in messages %} </p>
-                <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-            <h4>Login</h4>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Username</label>
-                <input type="username" name="username" class="form-control" id="username" placeholder="username">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="password">
-            </div>
-            <div class="row mt-3 mb-3">
-                <div class="col-md-6">
-                    <input type="submit" value="Login" class="btn btn-login">
+                {% if messages %}
+                    <p>{% for message in messages %} </p>
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                <h4>Login</h4>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                    <input type="username" name="username" class="form-control" id="username" placeholder="username">
                 </div>
-                <p class="text-center">
-                    Dont have an account?  <a href="{% url 'register' %}" class="text-decoration-none">Signup</a>
-                </p>    
-            </div>
-        </form>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="password">
+                </div>
+                <div class="row mt-3 mb-3">
+                    <div class="col-md-6">
+                        <input type="submit" value="Login" class="btn btn-login">
+                    </div>
+                    <p class="text-center">
+                        Dont have an account?  <a href="{% url 'register' %}" class="text-decoration-none">Signup</a>
+                    </p>    
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
