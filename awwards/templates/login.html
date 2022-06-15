@@ -12,6 +12,7 @@
 {% block content %}
 <div class="login">
     <div class="container mt-5 col-sm-4">
+        
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
 
