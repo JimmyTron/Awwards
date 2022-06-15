@@ -47,7 +47,7 @@ def register(request):
       if form.is_valid():
          user = form.save(commit=False)
          user.save()
-         profile = Profile(username=username)[0]
+         profile = Profile(username=user)
          profile.save()
 
       return redirect('login')
