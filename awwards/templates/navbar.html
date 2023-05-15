@@ -56,7 +56,10 @@
       <a href="/user/{{profile.username}}" style="color:black;text-decoration:none;margin:auto;">
         <p style="font-size: 13px; font-weight:lighter;margin:auto;text-transform:uppercase;margin-left:-20px;">{{profile.username}}</p>
       </a>
-      <img src="{{profile.avatar.url}}" class="gallery-image" style="margin:auto;"  width=8 height=8>
+      {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" class="gallery-image" style="margin:auto;" width="8" height="8">
+      {% endif %}
+
       <a href="{% url 'new-project' %}" >
         <button class="btn btn-success" style="height:50px;  margin-top: 10px; margin-left:20px;background-color:#49c5b6;border-radius:20;">Create New Project</button>
       </a>

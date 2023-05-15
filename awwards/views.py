@@ -13,6 +13,7 @@ from django.db.models import Max
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as authlogin,logout
+from django.forms.utils import ErrorList
 
 
 from rest_framework.response import Response
@@ -89,6 +90,10 @@ def create_profile(request):
         if form.is_valid():
             profile = form.save(commit=False)
             profile.username = current_user
+
+            if not profile.avatar:
+                form.errors['avatar'] = ErrorList(['Please upload an avatar image'])
+                return render(request, 'create_profile.html', {"form": form})
 
             profile.save()
         return redirect('Index')

@@ -33,7 +33,7 @@ class Project(models.Model):
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')
-    description = HTMLField()
+    description = models.TextField()
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
