@@ -13,7 +13,7 @@
 <body style="background-image: url('{% static 'images/login3.webp' %}');backckground-position: fixed;">
 <div class="login" id="login">
     <div class="">
-        <div class="container mt-5 col-md-4">
+        <div class="container mt-5 col-md-4" style="margin-left:300px;">
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
 
@@ -36,7 +36,7 @@
                         <input type="submit" value="Login" class="btn btn-login">
                     </div>
                     <p class="text-center">
-                        Dont have an account?  <a href="{% url 'register' %}" class="text-decoration-none">Signup</a>
+                        Dont have an account?  <a href="{% url 'register' %}" class="text-decoration-none">Register</a>
                     </p>    
                 </div>
             </form>
