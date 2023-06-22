@@ -1,24 +1,21 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse,Http404,HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
-from .models import Project,Profile,Rating
-from .forms import ProjectForm,ProfileForm,RatingForm, RegisterForm
-from decouple import config,Csv
 import datetime as dt
-from django.http import JsonResponse
-import json
-from django.db.models import Q
-from django.db.models import Max
-from django.contrib.auth.models import User
+
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as authlogin,logout
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as authlogin
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.forms.utils import ErrorList
-
-
+from django.shortcuts import redirect, render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import ProfileSerializer,ProjectSerializer
+
+from .forms import ProfileForm, ProjectForm, RatingForm, RegisterForm
+from .models import Profile, Project, Rating
+from .serializers import ProfileSerializer, ProjectSerializer
+
 
 def login(request):	
    print(request.method)
@@ -58,8 +55,8 @@ def register(request):
 
    return render(request, 'register.html', context)
 
-
-def logout(request):
+def sign_out(request):
+   logout(request)
    return redirect('login')
 
 def index(request):
@@ -71,16 +68,18 @@ def index(request):
     resources=Project.objects.all()[11:15]
     resources2=Project.objects.all()[15:19]
 
-    try:
-        if not request.user.is_authenticated:
-            return redirect('/accounts/login/')
-        current_user = request.user
-        profile =Profile.objects.filter(username=current_user)[0]
-        print(current_user)
-    except ObjectDoesNotExist:
-        return redirect('create-profile')
+    context = {
+        "winners":winners, 
+        "caraousel":caraousel,
+        "date":date,
+        "nominees":nominees,
+        "directories":directories,
+        "resources":resources,
+        "resources2":resources2
+    }
 
-    return render(request,'index.html',{"winners":winners,"profile":profile,"caraousel":caraousel,"date":date,"nominees":nominees,"directories":directories,"resources":resources,"resources2":resources2})
+
+    return render(request,'index.html', context)
 
 @login_required(login_url='/accounts/login/')
 def create_profile(request):

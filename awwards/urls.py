@@ -4,11 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    path('', views.login, name='login'),
+    path('',views.index, name='Index'),
+    path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
-    path('logout/', views.logout, name='logout'),
+    path('logout/', views.sign_out, name='logout'),
     path('create/profile',views.create_profile, name='create-profile'),
-    path('index',views.index,name='Index'),
     path('new/project',views.new_project, name='new-project'),
     path('directory/',views.directory, name='directory'),
     path('profile/',views.profile, name='profile'),
