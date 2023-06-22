@@ -152,8 +152,8 @@ STATICFILES_DIRS = (
 # AWS_QUERYSTRING_AUTH = False
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'mi
 
-# AWS_ACCESS_KEY_ID = 'AKIARVZNTIDFXOO322AU'
-# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID'
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
 # AWS_STORAGE_BUCKET_NAME = 'awwward-bucket'
 
@@ -164,3 +164,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django_on_heroku.settings(locals())
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://awwards.up.railway.app/'
+]
