@@ -14,7 +14,7 @@ urlpatterns=[
     path('profile/',views.profile, name='profile'),
     path('site/<site_id>',views.site,name='site'),
     path('search/',views.search_results, name='search_results'),
-    path('user/',views.user_profile,name='user-profile'),
+    # path('user/',views.user_profile,name='user-profile'),
 
     path('api/profiles/', views.ProfileList.as_view()),
     path('api/projects/', views.ProjectList.as_view()),
