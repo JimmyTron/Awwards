@@ -18,11 +18,11 @@ from .serializers import ProfileSerializer, ProjectSerializer
 
 
 def login(request):	
-   print(request.method)
+#    print(request.method)
    if request.method == 'POST':
       username = request.POST['username']
       password = request.POST['password']
-      print(username, password)
+    #   print(username, password)
       try:
          user = User.objects.get(username=username, password=password)
 
@@ -32,7 +32,7 @@ def login(request):
       user = authenticate(request, username=username, password=password)
       if user is not None:
          authlogin(request,user)
-         return redirect('create/profile')
+         return redirect('Index')
       else:
          messages.error(request, 'Invalid username or password')
 
@@ -57,7 +57,7 @@ def register(request):
 
 def sign_out(request):
    logout(request)
-   return redirect('login')
+   return redirect('Index')
 
 def index(request):
     date = dt.date.today()
@@ -120,6 +120,7 @@ def new_project(request):
 
     return render(request,'new_project.html',{"form":form})
 
+@login_required(login_url='/login/')
 def directory(request):
     date = dt.date.today()
     current_user = request.user
@@ -130,7 +131,7 @@ def directory(request):
 
     return render(request,'directory.html',{"winners":winners,"profile":profile,"caraousel":caraousel,"date":date})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login/')
 def profile(request):
     current_user = request.user
     profile =Profile.objects.filter(username=current_user)[0]
