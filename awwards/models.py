@@ -32,7 +32,7 @@ class Project(models.Model):
 
 
 class Profile(models.Model):
-    avatar = models.ImageField(upload_to='avatars/')
+    avatar = models.ImageField(upload_to='avatars/', default='media/default.png')
     description = models.TextField()
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
