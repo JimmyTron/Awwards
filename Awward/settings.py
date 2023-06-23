@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'awwards',
 
-    'rest_framework',
     'bootstrap3',
 ]
 
