@@ -39,22 +39,20 @@ def login(request):
    return render(request, 'login.html') 
 
 def register(request):
-   register_form = RegisterForm()
-   if request.method == 'POST':
-      form = RegisterForm(request.POST)
-      if form.is_valid():
-         user = form.save(commit=False)
-         user.save()
-         profile = Profile(username=user)
-         profile.save()
+    register_form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            profile = Profile.objects.create(user=user)
+            profile.save()
+            login(request, user)
+            return redirect('login')
 
-      return redirect('login')
-   context = {
-      'form': register_form,
-   }
-
-   return render(request, 'register.html', context)
-
+    context = {
+        'form': register_form,
+    }
+    return render(request, 'register.html', context)
 def sign_out(request):
    logout(request)
    return redirect('Index')
@@ -81,7 +79,7 @@ def index(request):
 
     return render(request,'index.html', context)
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login/')
 def create_profile(request):
     current_user = request.user
     if request.method=='POST':
@@ -101,7 +99,7 @@ def create_profile(request):
 
     return render(request,'create_profile.html',{"form":form})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login/')
 def new_project(request):
     current_user = request.user
     profile =Profile.objects.filter(username=current_user)[0]
@@ -139,7 +137,7 @@ def profile(request):
 
     return render(request,'profile.html',{"projects":projects,"profile":profile})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login/')
 def site(request,site_id):
     current_user = request.user
     profile =Profile.objects.filter(username=current_user)

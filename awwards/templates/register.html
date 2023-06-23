@@ -14,7 +14,7 @@
 <body style="background-image: url('{% static 'images/login3.webp' %}');backckground-position: fixed;">
 
     <div class="container mt-5 col-md-4" style="margin-left:300px;">
-        <form method="post" action="{% url 'register' %}" class="form-control">
+        <form method="post" action="{% url 'register' %}" >
             {% csrf_token %}
 
             {% if messages %}
@@ -24,11 +24,26 @@
             {% endif %}
             <h4>Register</h4>
             {{ form.errors.as_p }}
-            {{ form }}
-         <input type="submit" value="Register" class="btn btn-register">
-         <p class="text-center">
-            Already have an account?  <a href="{% url 'login' %}" class="text-decoration-none">Login</a>
-        </p>
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <input type="submit" value="Register" class="btn btn-register">
+            <p class="text-center">
+                Already have an account? <a href="{% url 'login' %}" class="text-decoration-none">Login</a>
+            </p>
         </form>
 
     </div>
