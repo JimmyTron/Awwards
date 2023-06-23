@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['awwards.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['awwards.up.railway.app', '127.0.0.1','*','localhost']
 
 
 # Application definition
@@ -87,6 +87,8 @@ DATABASES = {
         'NAME': config('PGDATABASE'),
         'USER': config('PGUSER'),
         'PASSWORD': config('PGPASSWORD'),
+        'HOST': config('PGHOST'),
+        'PORT': config('PGPORT'),
     }
 }
 
