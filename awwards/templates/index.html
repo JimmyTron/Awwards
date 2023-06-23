@@ -50,63 +50,51 @@
 <div class="pages">
 <div class="column">
   {% for winner in winners %}
-    <div class="col-xs-4">
-      <div class="card">
-    <img class="card-img-top img-responsive" src="{{winner.landing_page.url}}" alt="Card image cap" responsive>
-    <div class="card-body">
-    <a href="/site/{{winner.id}}" style="color:black;text-decoration:none;">
-      <h5 class="card-title" style="line-height:15px;">{{winner.title}}</h5>
-    </a>
-    </div>
-    <div class="card-footer ">
-      <div class="user-image">
-      <img src="{{winner.avatar.url}}" class="gallery-image" alt="">
-      <a href="/user/{{winner.username}}" style="color:black;text-decoration:none;margin:auto;">
-        <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{winner.username}}</p>
-      </a>
-    </div>
+  <div class="col-xs-4">
+    <div class="card">
+      <img class="card-img-top img-responsive" src="{{ winner.landing_page.url }}" alt="Card image cap" responsive>
+      <div class="card-body">
+        <a href="/site/{{ winner.id }}" style="color:black;text-decoration:none;">
+          <h5 class="card-title" style="line-height:15px;">{{ winner.title }}</h5>
+        </a>
+      </div>
+      <div class="card-footer ">
+        <div class="user-image">
+          {% if winner.avatar %}
+            <img src="{{ winner.avatar.url }}" class="gallery-image" alt="">
+          {% endif %}
+          <a href="/user/{{ winner.username }}" style="color:black;text-decoration:none;margin:auto;">
+            <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{ winner.username }}</p>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-    </div>
-  {% endfor %}
-</div>
-</div> 
-<div class="pages">
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    <div class="card" style="height:44.6rem;width: 40.2rem;">
-  <div class="card-body">
-    <h5 class="card-title" style="line-height:28px;font-size:15px;">Professional Directory</h5>
-    <p class="card-text professional">Discover <span style="color:#49c5b6">Quality</span> in the Field </p>
-    <br><br>
-    <a href="{% url 'directory' %}" >
-      <button class="btn btn-default btn-sm" style="border-radius:18%;">Discover</button>
-    </a>
-  </div>
-</div>
-  </div>
+{% endfor %}
 
-  {% for directory in directories %}
+{% for directory in directories %}
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
     <div class="card" style="width: 40.2rem;">
-  <img class="card-img-top img-responsive" src="{{directory.landing_page.url}}" alt="Card image cap" responsive>
-  <div class="card-body">
-    <a href="/site/{{directory.id}}" style="color:black;text-decoration:none;">
-      <h5 class="card-title" style="line-height:28px;">{{directory.title}}</h5>
-    </a>
-    <p class="card-text"><span class="date">{{directory.post_date}}</span></p>
+      <img class="card-img-top img-responsive" src="{{ directory.landing_page.url }}" alt="Card image cap" responsive>
+      <div class="card-body">
+        <a href="/site/{{ directory.id }}" style="color:black;text-decoration:none;">
+          <h5 class="card-title" style="line-height:28px;">{{ directory.title }}</h5>
+        </a>
+        <p class="card-text"><span class="date">{{ directory.post_date }}</span></p>
+      </div>
+      <div class="card-footer ">
+        <div class="user-image">
+          {% if directory.avatar %}
+            <img src="{{ directory.avatar.url }}" class="gallery-image" alt="" width="8" height="8">
+          {% endif %}
+          <a href="/user/{{ directory.username }}" style="color:black;text-decoration:none;margin:auto;">
+            <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{ directory.username }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card-footer ">
-    <div class="user-image">
-    <img src="{{directory.avatar.url}}" class="gallery-image" alt=""  width=8 height=8>
-    <a href="/user/{{directory.username}}" style="color:black;text-decoration:none;margin:auto;">
-      <p style="font-size: 13px; font-weight: lighter;margin:auto; padding:2px;text-transform: uppercase;">{{directory.username}}</p>
-    </a>
-  </div>
-  </div>
-</div>
-  </div>
-  {% endfor %}
+{% endfor %}
 
 </div>
 </div>
@@ -208,9 +196,6 @@ $('#circle-d').circleProgress({
 		color: 'SteelBlue'
 	}
 });
-
-
-
 
 </script>
 
